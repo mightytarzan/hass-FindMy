@@ -77,7 +77,7 @@ class FindMyCoordinator(DataUpdateCoordinator[FindMyLocationData]):
         devices: list[FindMyDevice] = list(self.async_contexts())
         _LOGGER.debug("Fetching reports for devices: %s", devices)
         try:
-            async with async_timeout.timeout(10):
+            async with async_timeout.timeout(90):
                 device_reports = await account.fetch_location(devices)
         except UnauthorizedError as err:
             _LOGGER.exception("Unauthorized... :c")
